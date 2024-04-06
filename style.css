@@ -1,0 +1,228 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  font-family: 'Kanit', sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+}
+
+body {
+  padding: 0;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  background-color: gray;
+}
+
+#calculator-container {
+  display: grid; 
+  padding: 0.625rem;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-template-areas:
+      "display display display display"
+      "clear-btn clear-btn delete-btn divide"
+      "seven eight nine multi"
+      "four five six minus"
+      "one two three plus"
+      "zero decimal equals equals";
+  grid-row-gap: 0.3125rem;
+  grid-column-gap: 0.3125rem;
+  justify-content: center;
+  background-color: #171435;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 18.75rem;
+  border-radius: 15px;
+}
+
+#display {
+  margin-bottom: 0.3125rem; 
+}
+
+#display,
+#clear-btn,
+#delete-btn,
+.operators {
+  background-color: #a9a2e5;
+  color: #251d77;
+  border: none;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.number,
+#decimal-btn {
+  background-color: #D6D4E8;
+  color: #343553;
+  font-size: 2rem;
+  border: none;
+  border-radius: 15px;
+}
+
+#display {
+  grid-area: display;
+  background-color: #D6D4E8;
+  font-size: 2.5rem;
+  text-align: right;
+  padding-right: .25rem;
+}
+
+#clear-btn {
+  grid-column: span 2;
+  grid-area: clear-btn;
+}
+
+
+#delete-btn {
+  grid-column: span 1;
+  grid-area: delete-btn;
+}
+
+#divide {
+  grid-column: span 1;
+  grid-area: divide;
+}
+
+#multiply {
+  grid-column: span 1;
+  grid-area: multi;
+}
+
+#minus {
+  grid-column: span 1;
+  grid-area: minus;
+}
+
+#plus {
+  grid-column: span 1;
+  grid-area: plus;
+
+}
+
+#clear-btn:hover,
+#delete-btn:hover,
+.number:hover,
+.operators:hover,
+#equals-btn:hover,
+#decimal-btn:hover {
+  opacity: 0.8;
+}
+
+#decimal-btn {
+  grid-area: decimal;
+}
+
+#equals-btn {
+  grid-area: equals;
+  grid-column: span 2;
+  background-color: #a671bc;
+  color: #171435;
+  font-size: 2rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 15px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px;
+  color: #9cb988;
+  font-size: 20px;
+}
+
+.github-icon {
+  background-image: url('./assets/githublogo.png'); 
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+}
+
+.github-icon:hover {
+  animation: spinning-coin 0.5s linear;
+}
+
+@keyframes spinning-coin {
+  0% {
+    transform: perspective(400px) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(400px) rotateY(1turn);
+  }
+}
+
+.theme-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #f5dbdb;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: rgb(160, 160, 195);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #15181a;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #192e85;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+body.dark-mode {
+  background-color: rgb(27, 34, 22);
+  color: #fff;
+}
